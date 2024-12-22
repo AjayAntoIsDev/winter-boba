@@ -1,0 +1,126 @@
+<body><div id="highlighter"></div>
+    <video class="video-background" autoplay="" muted="" loop="">
+      <source src="https://cloud-fh9fhcckr-hack-club-bot.vercel.app/0lighted_christmas_tree_1920x1080.mp4" type="video/mp4">
+    </video>
+    <div class="overlay"></div>
+    <div id="particles-js"><canvas class="particles-js-canvas-el" style="width: 100%; height: 100%;" width="605" height="430"></canvas></div>
+    <div class="snow-container" id="snow-container"><div class="snow" style="left: 54.5481px; animation: 3.22895s linear 0s 1 normal forwards running snowfall;"></div><div class="snow" style="left: 333.593px; animation: 4.77849s linear 0s 1 normal forwards running snowfall;"></div><div class="snow" style="left: 12.4568px; animation: 4.58876s linear 0s 1 normal forwards running snowfall;"></div><div class="snow" style="left: 266.941px; animation: 4.08074s linear 0s 1 normal forwards running snowfall;"></div><div class="snow" style="left: 548.328px; animation: 3.87797s linear 0s 1 normal forwards running snowfall;"></div><div class="snow" style="left: 433.886px; animation: 4.6105s linear 0s 1 normal forwards running snowfall;"></div><div class="snow" style="left: 105.618px; animation: 3.08664s linear 0s 1 normal forwards running snowfall;"></div><div class="snow" style="left: 299.37px; animation: 2.62334s linear 0s 1 normal forwards running snowfall;"></div><div class="snow" style="left: 309.984px; animation: 2.62421s linear 0s 1 normal forwards running snowfall;"></div><div class="snow" style="left: 426.718px; animation: 2.12713s linear 0s 1 normal forwards running snowfall;"></div><div class="snow" style="left: 399.304px; animation: 2.1175s linear 0s 1 normal forwards running snowfall;"></div><div class="snow" style="left: 80.4806px; animation: 3.66216s linear 0s 1 normal forwards running snowfall;"></div><div class="snow" style="left: 53.0294px; animation: 4.76903s linear 0s 1 normal forwards running snowfall;"></div><div class="snow" style="left: 318.645px; animation: 2.42466s linear 0s 1 normal forwards running snowfall;"></div><div class="snow" style="left: 63.2149px; animation: 4.76225s linear 0s 1 normal forwards running snowfall;"></div><div class="snow" style="left: 316.015px; animation: 3.39439s linear 0s 1 normal forwards running snowfall;"></div><div class="snow" style="left: 469.327px; animation: 3.34728s linear 0s 1 normal forwards running snowfall;"></div><div class="snow" style="left: 460.433px; animation: 3.47682s linear 0s 1 normal forwards running snowfall;"></div><div class="snow" style="left: 148.43px; animation: 2.85636s linear 0s 1 normal forwards running snowfall;"></div><div class="snow" style="left: 26.2965px; animation: 3.70306s linear 0s 1 normal forwards running snowfall;"></div><div class="snow" style="left: 357.804px; animation: 4.37554s linear 0s 1 normal forwards running snowfall;"></div><div class="snow" style="left: 285.238px; animation: 2.43276s linear 0s 1 normal forwards running snowfall;"></div><div class="snow" style="left: 182.795px; animation: 4.88609s linear 0s 1 normal forwards running snowfall;"></div><div class="snow" style="left: 382.82px; animation: 2.99089s linear 0s 1 normal forwards running snowfall;"></div><div class="snow" style="left: 398.591px; animation: 3.75118s linear 0s 1 normal forwards running snowfall;"></div><div class="snow" style="left: 437.996px; animation: 3.3518s linear 0s 1 normal forwards running snowfall;"></div></div>
+    <div class="countdown-container">
+      <h1>Countdown to 2025</h1>
+      <div class="countdown">
+        <div class="time-segment">
+          <div class="time" id="days">09</div>
+          <div class="label">Days</div>
+        </div>
+        <div class="time-segment">
+          <div class="time" id="hours">04</div>
+          <div class="label">Hours</div>
+        </div>
+        <div class="time-segment">
+          <div class="time" id="minutes">13</div>
+          <div class="label">Minutes</div>
+        </div>
+        <div class="time-segment">
+          <div class="time flip" id="seconds">20</div>
+          <div class="label">Seconds</div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+      particlesJS("particles-js", {
+        particles: {
+          number: {
+            value: 50,
+            density: {
+              enable: true,
+              value_area: 800,
+            },
+          },
+          color: {
+            value: "#ffffff",
+          },
+          shape: {
+            type: "circle",
+          },
+          size: {
+            value: 3,
+            random: true,
+          },
+          line_linked: {
+            enable: false,
+          },
+          move: {
+            enable: true,
+            speed: 2,
+            direction: "bottom",
+            random: true,
+            straight: false,
+            out_mode: "out",
+          },
+        },
+      });
+
+      function createSnow() {
+        const container = document.getElementById("snow-container");
+        const snow = document.createElement("div");
+        snow.className = "snow";
+
+        const startPosition = Math.random() * window.innerWidth;
+        snow.style.left = startPosition + "px";
+
+        const animationDuration = Math.random() * 3 + 2;
+        snow.style.animation = `snowfall ${animationDuration}s linear forwards`;
+
+        container.appendChild(snow);
+
+        setTimeout(() => {
+          snow.remove();
+        }, animationDuration * 1000);
+      }
+
+      setInterval(createSnow, 100);
+
+      function updateCountdown() {
+        const newYear = new Date("January 1, 2025 00:00:00").getTime();
+        const now = new Date().getTime();
+        const gap = newYear - now;
+
+        const second = 1000;
+        const minute = second * 60;
+        const hour = minute * 60;
+        const day = hour * 24;
+
+        const d = Math.floor(gap / day);
+        const h = Math.floor((gap % day) / hour);
+        const m = Math.floor((gap % hour) / minute);
+        const s = Math.floor((gap % minute) / second);
+
+        updateElement("days", d);
+        updateElement("hours", h);
+        updateElement("minutes", m);
+        updateElement("seconds", s);
+      }
+
+      function updateElement(id, value) {
+        const element = document.getElementById(id);
+        const currentValue = element.textContent;
+        const newValue = String(value).padStart(2, "0");
+
+        if (currentValue !== newValue) {
+          element.classList.add("flip");
+          element.textContent = newValue;
+          setTimeout(() => {
+            element.classList.remove("flip");
+          }, 600);
+        }
+      }
+
+      setInterval(updateCountdown, 1000);
+      updateCountdown();
+    </script>
+    <script crossorigin="" type="text/javascript" src="https://codesandbox.io/static/js/watermark-button.eeb14a97b.js"></script>
+  
+
+</body>
