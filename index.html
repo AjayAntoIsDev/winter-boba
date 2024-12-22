@@ -1,27 +1,177 @@
-<body><div id="highlighter"></div>
-    <video class="video-background" autoplay="" muted="" loop="">
-      <source src="https://cloud-fh9fhcckr-hack-club-bot.vercel.app/0lighted_christmas_tree_1920x1080.mp4" type="video/mp4">
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        margin: 0;
+        font-family: "Arial", sans-serif;
+        color: white;
+        height: 100vh;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .video-background {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: -1;
+        filter: brightness(0.7);
+      }
+
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 51, 0.3);
+        z-index: 0;
+      }
+
+      #particles-js {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+      }
+
+      .snow-container {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      .snow {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background: white;
+        border-radius: 50%;
+        filter: blur(2px);
+      }
+
+      @keyframes snowfall {
+        0% {
+          transform: translateY(-10vh) translateX(0);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(100vh) translateX(100px);
+          opacity: 0.3;
+        }
+      }
+
+      .countdown-container {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        animation: float 3s ease-in-out infinite;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      h1 {
+        font-size: 3rem;
+        margin-bottom: 2rem;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      .countdown {
+        display: flex;
+        gap: 2rem;
+      }
+
+      .time-segment {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .time {
+        font-size: 4rem;
+        font-weight: bold;
+        background: rgba(255, 255, 255, 0.2);
+        padding: 1rem;
+        border-radius: 10px;
+        min-width: 100px;
+        margin-bottom: 0.5rem;
+        transition: all 0.3s ease;
+      }
+
+      .label {
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translate(-50%, -50%);
+        }
+        50% {
+          transform: translate(-50%, -60%);
+        }
+      }
+
+      .time.flip {
+        animation: flip 0.6s ease-in-out;
+      }
+
+      @keyframes flip {
+        0% {
+          transform: rotateX(0);
+        }
+        50% {
+          transform: rotateX(90deg);
+        }
+        100% {
+          transform: rotateX(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <video class="video-background" autoplay muted loop>
+      <source
+        src="https://cloud-fh9fhcckr-hack-club-bot.vercel.app/0lighted_christmas_tree_1920x1080.mp4"
+        type="video/mp4"
+      />
     </video>
     <div class="overlay"></div>
-    <div id="particles-js"><canvas class="particles-js-canvas-el" style="width: 100%; height: 100%;" width="605" height="430"></canvas></div>
-    <div class="snow-container" id="snow-container"><div class="snow" style="left: 54.5481px; animation: 3.22895s linear 0s 1 normal forwards running snowfall;"></div><div class="snow" style="left: 333.593px; animation: 4.77849s linear 0s 1 normal forwards running snowfall;"></div><div class="snow" style="left: 12.4568px; animation: 4.58876s linear 0s 1 normal forwards running snowfall;"></div><div class="snow" style="left: 266.941px; animation: 4.08074s linear 0s 1 normal forwards running snowfall;"></div><div class="snow" style="left: 548.328px; animation: 3.87797s linear 0s 1 normal forwards running snowfall;"></div><div class="snow" style="left: 433.886px; animation: 4.6105s linear 0s 1 normal forwards running snowfall;"></div><div class="snow" style="left: 105.618px; animation: 3.08664s linear 0s 1 normal forwards running snowfall;"></div><div class="snow" style="left: 299.37px; animation: 2.62334s linear 0s 1 normal forwards running snowfall;"></div><div class="snow" style="left: 309.984px; animation: 2.62421s linear 0s 1 normal forwards running snowfall;"></div><div class="snow" style="left: 426.718px; animation: 2.12713s linear 0s 1 normal forwards running snowfall;"></div><div class="snow" style="left: 399.304px; animation: 2.1175s linear 0s 1 normal forwards running snowfall;"></div><div class="snow" style="left: 80.4806px; animation: 3.66216s linear 0s 1 normal forwards running snowfall;"></div><div class="snow" style="left: 53.0294px; animation: 4.76903s linear 0s 1 normal forwards running snowfall;"></div><div class="snow" style="left: 318.645px; animation: 2.42466s linear 0s 1 normal forwards running snowfall;"></div><div class="snow" style="left: 63.2149px; animation: 4.76225s linear 0s 1 normal forwards running snowfall;"></div><div class="snow" style="left: 316.015px; animation: 3.39439s linear 0s 1 normal forwards running snowfall;"></div><div class="snow" style="left: 469.327px; animation: 3.34728s linear 0s 1 normal forwards running snowfall;"></div><div class="snow" style="left: 460.433px; animation: 3.47682s linear 0s 1 normal forwards running snowfall;"></div><div class="snow" style="left: 148.43px; animation: 2.85636s linear 0s 1 normal forwards running snowfall;"></div><div class="snow" style="left: 26.2965px; animation: 3.70306s linear 0s 1 normal forwards running snowfall;"></div><div class="snow" style="left: 357.804px; animation: 4.37554s linear 0s 1 normal forwards running snowfall;"></div><div class="snow" style="left: 285.238px; animation: 2.43276s linear 0s 1 normal forwards running snowfall;"></div><div class="snow" style="left: 182.795px; animation: 4.88609s linear 0s 1 normal forwards running snowfall;"></div><div class="snow" style="left: 382.82px; animation: 2.99089s linear 0s 1 normal forwards running snowfall;"></div><div class="snow" style="left: 398.591px; animation: 3.75118s linear 0s 1 normal forwards running snowfall;"></div><div class="snow" style="left: 437.996px; animation: 3.3518s linear 0s 1 normal forwards running snowfall;"></div></div>
+    <div id="particles-js"></div>
+    <div class="snow-container" id="snow-container"></div>
     <div class="countdown-container">
       <h1>Countdown to 2025</h1>
       <div class="countdown">
         <div class="time-segment">
-          <div class="time" id="days">09</div>
+          <div class="time" id="days">00</div>
           <div class="label">Days</div>
         </div>
         <div class="time-segment">
-          <div class="time" id="hours">04</div>
+          <div class="time" id="hours">00</div>
           <div class="label">Hours</div>
         </div>
         <div class="time-segment">
-          <div class="time" id="minutes">13</div>
+          <div class="time" id="minutes">00</div>
           <div class="label">Minutes</div>
         </div>
         <div class="time-segment">
-          <div class="time flip" id="seconds">20</div>
+          <div class="time" id="seconds">00</div>
           <div class="label">Seconds</div>
         </div>
       </div>
@@ -120,7 +270,6 @@
       setInterval(updateCountdown, 1000);
       updateCountdown();
     </script>
-    <script crossorigin="" type="text/javascript" src="https://codesandbox.io/static/js/watermark-button.eeb14a97b.js"></script>
-  
+  </body>
+</html>
 
-</body>
